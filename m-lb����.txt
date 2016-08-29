@@ -1,0 +1,48 @@
+1(POST)
+http://192.168.1.18:8888/instances/cgz 
+request:
+{
+ "app":"cgz"
+}
+result:
+{"status": "OK", "instances": ["192_168_1_14_31689 192.168.1.14:31689\n", 
+"192_168_1_16_31295 192.168.1.16:31295\n", "192_168_1_16_31470 192.168.1.16:31470\n"], "app": "cgz"}
+result:
+2(POST)
+http://192.168.1.18:8888/apps
+request:None
+result:
+{"status": "OK", "apps": ["cgz", "cgz2"]}
+3£¨POST)
+http://192.168.1.18:8888/isolate/192.168.1.16:31295
+request:
+{
+ "instance":"192.168.1.16:31295"
+}
+result:
+{"status": "OK", "instance": "192.168.1.16:31295"} 
+4(POST)
+http://192.168.1.18:8888/recovery/192.168.1.16:31295
+request:
+{
+ "instance":"192.168.1.16:31295"
+}
+result:
+{"status": "OK", "instance": "192.168.1.16:31295"}
+5£¨POST)
+http://192.168.1.18:8888/balance/cgz
+requst:
+{
+ "app":"cgz"
+}
+result:
+{"status": "OK", "app": "cgz", "balance": "roundrobin"}
+6£¨POST)
+http://192.168.1.18:8888/acl
+request:
+{
+
+"acl":"test"
+}
+result:
+{"status": "OK", "acl": ["path /_haproxy_getpids", "path /_haproxy_getconfig"]}
